@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import * as CryptoJS from 'crypto-js'
 
 @Component({
   selector: 'app-tela-descript',
@@ -11,7 +12,7 @@ export class TelaDescriptPage implements OnInit {
   encryptedNome:any;
   encryptedEmail:any;
   encryptedMenssagem:any;
-  secretKey:any;
+  secretKey: string = ""
   
   descryptedNome: string = "";
   descryptedEmail: string = "";
@@ -37,11 +38,11 @@ export class TelaDescriptPage implements OnInit {
       const nomeDesc = bytesNome.toString(CryptoJS.enc.Utf8);
       this.descryptedNome = nomeDesc;
 
-      const bytesEmail = CryptoJS.AES.decrypt(this.encryptedNome, this.secretKey);
+      const bytesEmail = CryptoJS.AES.decrypt(this.encryptedEmail, this.secretKey);
       const emailDesc = bytesEmail.toString(CryptoJS.enc.Utf8);
       this.descryptedEmail = emailDesc;
 
-      const bytesMenssagem = CryptoJS.AES.decrypt(this.encryptedNome, this.secretKey);
+      const bytesMenssagem = CryptoJS.AES.decrypt(this.encryptedMenssagem, this.secretKey);
       const menssagemDesc = bytesMenssagem.toString(CryptoJS.enc.Utf8);
       this.descryptedMenssagem = menssagemDesc
     }

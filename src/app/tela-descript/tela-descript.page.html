@@ -6,6 +6,11 @@
 
 <ion-content [fullscreen]="true">
 
+  <ion-item>
+    <ion-label position="floating">Chave Secreta</ion-label>
+    <ion-input [(ngModel)]="secretKey" type="text"></ion-input>
+  </ion-item>
+
   <ion-button expand="full" (click)="descrypt()">Descriptografar</ion-button>
 
   <ion-item>
@@ -23,7 +28,4 @@
     <ion-textarea [(ngModel)]="descryptedMenssagem" readonly></ion-textarea>
   </ion-item>
 
-  <ion-label>{{descryptedNome}}</ion-label>
-  <ion-label>{{descryptedEmail}}</ion-label>
-  <ion-label>{{descryptedMenssagem}}</ion-label>
 </ion-content>

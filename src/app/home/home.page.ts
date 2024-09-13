@@ -22,7 +22,7 @@ export class HomePage {
 
   abrirTela(){
     this.router.navigateByUrl
-    (`/tela-descript/${this.encryptedNome}/${this.encryptedEmail}/${this.encryptedMenssagem}/${this.secretKey}`);
+    (`/tela-descript/${this.encryptedNome}/${this.encryptedEmail}/${this.encryptedMenssagem}`);
   }
 
   encrypt(){
