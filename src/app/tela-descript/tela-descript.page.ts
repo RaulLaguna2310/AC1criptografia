@@ -13,7 +13,7 @@ export class TelaDescriptPage implements OnInit {
   encryptedEmail:any;
   encryptedMenssagem:any;
   secretKey: string = ""
-  
+
   descryptedNome: string = "";
   descryptedEmail: string = "";
   descryptedMenssagem: string = "";
@@ -45,6 +45,10 @@ export class TelaDescriptPage implements OnInit {
       const bytesMenssagem = CryptoJS.AES.decrypt(this.encryptedMenssagem, this.secretKey);
       const menssagemDesc = bytesMenssagem.toString(CryptoJS.enc.Utf8);
       this.descryptedMenssagem = menssagemDesc
+    }
+    else if (!this.secretKey) {
+      alert("Insira a chave");
+      return;
     }
   }
 }

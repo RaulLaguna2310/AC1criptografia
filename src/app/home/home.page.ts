@@ -34,6 +34,10 @@ export class HomePage {
       this.encryptedEmail = this.urlSafeEncode(emailCrypt);
       this.encryptedMenssagem = this.urlSafeEncode(menssagemCrypt)
     }
+    else if (!this.nome || !this.email || !this.menssagem || !this.secretKey) {
+      alert("Preencha todos os campos ");
+      return;
+    }
   }
 
   private urlSafeEncode(value: string): string {
