@@ -8,16 +8,42 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TelaDescriptPage implements OnInit {
 
-  nome:any
-  email:any
-  menssagem:any
+  encryptedNome:any;
+  encryptedEmail:any;
+  encryptedMenssagem:any;
+  secretKey:any;
+  
+  descryptedNome: string = "";
+  descryptedEmail: string = "";
+  descryptedMenssagem: string = "";
 
   constructor(private activatedRoute : ActivatedRoute) { }
 
   ngOnInit(){
-    this.nome = this.activatedRoute.snapshot.paramMap.get('nome')
-    this.email = this.activatedRoute.snapshot.paramMap.get('email');
-    this.menssagem = this.activatedRoute.snapshot.paramMap.get('menssagem');
+    this.activatedRoute.params.subscribe(params =>{
+      this.encryptedNome = this.urlSafeDecode(params['encryptedNome']);
+      this.encryptedEmail = this.urlSafeDecode(params['encryptedEmail']);
+      this.encryptedMenssagem = this.urlSafeDecode(params['encryptedMenssagem'])
+    });
   }
 
+  private urlSafeDecode(value: string): string {
+    return value.replace(/_/g, '/').replace(/-/g, '+').replace(/\./g, '=');
+  }
+
+  descrypt(){
+    if(this.encryptedNome && this.encryptedEmail && this.encryptedMenssagem && this.secretKey){
+      const bytesNome = CryptoJS.AES.decrypt(this.encryptedNome, this.secretKey);
+      const nomeDesc = bytesNome.toString(CryptoJS.enc.Utf8);
+      this.descryptedNome = nomeDesc;
+
+      const bytesEmail = CryptoJS.AES.decrypt(this.encryptedNome, this.secretKey);
+      const emailDesc = bytesEmail.toString(CryptoJS.enc.Utf8);
+      this.descryptedEmail = emailDesc;
+
+      const bytesMenssagem = CryptoJS.AES.decrypt(this.encryptedNome, this.secretKey);
+      const menssagemDesc = bytesMenssagem.toString(CryptoJS.enc.Utf8);
+      this.descryptedMenssagem = menssagemDesc
+    }
+  }
 }

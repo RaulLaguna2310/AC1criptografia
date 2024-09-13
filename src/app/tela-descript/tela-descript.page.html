@@ -5,7 +5,25 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-label>{{nome}}</ion-label>
-  <ion-label>{{email}}</ion-label>
-  <ion-label>{{menssagem}}</ion-label>
+
+  <ion-button expand="full" (click)="descrypt()">Descriptografar</ion-button>
+
+  <ion-item>
+    <ion-label>Nome Descriptografado:</ion-label>
+    <ion-textarea [(ngModel)]="descryptedNome" readonly></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Email Descriptografado:</ion-label>
+    <ion-textarea [(ngModel)]="descryptedEmail" readonly></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Menssagem Descriptografada:</ion-label>
+    <ion-textarea [(ngModel)]="descryptedMenssagem" readonly></ion-textarea>
+  </ion-item>
+
+  <ion-label>{{descryptedNome}}</ion-label>
+  <ion-label>{{descryptedEmail}}</ion-label>
+  <ion-label>{{descryptedMenssagem}}</ion-label>
 </ion-content>

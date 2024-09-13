@@ -30,8 +30,18 @@
   <ion-button expand="full" (click)="encrypt()">Criptografar</ion-button>
 
   <ion-item>
-    <ion-label>Mensagem Criptografada</ion-label>
-    <ion-textarea [(ngModel)]="encryptedAll" readonly></ion-textarea>
+    <ion-label>Nome Criptografado:</ion-label>
+    <ion-textarea [(ngModel)]="encryptedNome" readonly></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Email Criptografado:</ion-label>
+    <ion-textarea [(ngModel)]="encryptedEmail" readonly></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Menssagem Criptografada:</ion-label>
+    <ion-textarea [(ngModel)]="encryptedMenssagem" readonly></ion-textarea>
   </ion-item>
 
   <ion-button expand="block" (click)="abrirTela()">Avançar</ion-button>

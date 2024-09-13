@@ -12,7 +12,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'tela-descript/:nome/:email/:menssagem',
+    path: 'tela-descript/:encryptedNome/:encryptedEmail/:encryptedMenssagem/:secretKey',
     loadChildren: () => import('./tela-descript/tela-descript.module').then( m => m.TelaDescriptPageModule)
   },
 ];
